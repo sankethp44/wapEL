@@ -1,0 +1,1 @@
+- The Resume Builder is a web application that allows users to create professional resumes quickly and easily. The application provides a user-friendly interface to input personal details, education, work experience, and skills, and then generates a well-formatted resume that can be downloaded as a PDF.
