@@ -1,174 +1,166 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Advanced Resume Builder</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Resume Builder - Home</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        /* Custom styles to enhance Bootstrap */
+        .hero-section {
+            background: linear-gradient(135deg, #3a4cc0 0%, #2575fc 100%);
+            padding: 100px 0;
+            color: white;
+        }
+        
+        .btn-resume {
+            padding: 12px 28px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            height: 80px;
+            width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+        }
+        
+        .navbar-custom {
+            background-color: #343a40;
+        }
+        
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: white;
+        }
+        
+        .navbar-custom .nav-link:hover {
+            color: rgba(255,255,255,0.8);
+        }
+    </style>
 </head>
 <body>
-
-    <nav class="navbar">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
-            <a class="navbar-brand" href="#">Advanced Resume Builder</a>
-            <ul class="nav-links">
-              <a href="#">Home</a>&nbsp;&nbsp;&nbsp;
-              <a href="about.html">About</a>
-            </ul>
+            <a class="navbar-brand fw-bold" href="#">Advanced Resume Builder</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="resumebuilder.html">Resume_builder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <div class="form-section">
-        <h1>Advanced Resume Builder</h1>
-        <div class="progress-bar">
-            <div class="progress" id="progressBar" style="width: 10%;"></div>
-        </div>
-        <div class="tab-navigation">
-            <div class="tab active" onclick="showTab('personalInfo')">Personal Info</div>
-            <div class="tab" onclick="showTab('education')">Education</div>
-            <div class="tab" onclick="showTab('projects')">Projects</div>
-            <div class="tab" onclick="showTab('skills')">Skills</div>
-            <div class="tab" onclick="showTab('extras')">Extras</div>
-        </div>
-    </div>
-
-    <div id="personalInfo" class="form-section tab-content">
-        <h2>Personal Information</h2>
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" placeholder="John Doe">
-        
-        <label for="profession">Professional Title:</label>
-        <input type="text" id="profession" placeholder="Software Engineer">
-        
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" placeholder="example@example.com">
-        
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" placeholder="(+91) 1234567890">
-        
-        <label for="address">Location:</label>
-        <input type="text" id="address" placeholder="City, State">
-        
-        <label for="linkedin">LinkedIn:</label>
-        <input type="url" id="linkedin" placeholder="linkedin.com/in/johndoe">
-        
-        <label for="github">GitHub:</label>
-        <input type="url" id="github" placeholder="github.com/johndoe">
-        
-        <label for="aboutMe">About Me:</label>
-        <textarea id="aboutMe" rows="4" placeholder="Write a brief professional summary about yourself, your key strengths, and career objectives..."></textarea>
-        
-        <div class="button-group">
-            <button type="button" onclick="nextTab('education')">Next: Education</button>
-        </div>
-    </div>
-
-    <div id="education" class="form-section tab-content hide">
-        <h2>Education</h2>
-        <div id="educationContainer">
-            <div class="entry-container">
-                <label for="school1">School/University:</label>
-                <input type="text" id="school1" placeholder="University of Example">
-                
-                <label for="degree1">Degree/Certificate:</label>
-                <input type="text" id="degree1" placeholder="Bachelor of Science in Computer Science">
-                
-                <label for="eduLocation1">Location:</label>
-                <input type="text" id="eduLocation1" placeholder="City, State, Country">
-                
-                <label for="eduYears1">Duration:</label>
-                <input type="text" id="eduYears1">
-                
-                <label for="gpa1">CGPA/Percentage:</label>
-                <input type="text" id="gpa1">
+    <!-- Hero Section with Banner -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">Create Your Professional Resume</h1>
+                    <p class="lead mb-5">Stand out from the crowd with our advanced resume builder. Create a professional resume in minutes that will impress employers and help you land your dream job.</p>
+                    <a href="resumebuilder.html" class="btn btn-light btn-lg btn-resume shadow">Generate Resume <i class="bi bi-arrow-right"></i></a>
+                </div>
             </div>
         </div>
-        <div class="button-group">
-            <button type="button" class="add-button" onclick="addEducation()">Add Education</button>
-            <button type="button" class="remove-button" onclick="removeEducation()">Remove Last</button>
-        </div>
-        <div class="button-group">
-            <button type="button" onclick="prevTab('personalInfo')">Previous: Personal Info</button>
-            <button type="button" onclick="nextTab('projects')">Next: Projects</button>
-        </div>
-    </div>
+    </section>
 
-    <div id="projects" class="form-section tab-content hide">
-        <h2>Projects</h2>
-        <div id="projectsContainer">
-            <div class="entry-container">
-                <label for="projectName1">Project Name:</label>
-                <input type="text" id="projectName1" placeholder="E-commerce Platform">
-                
-                <label for="projectDates1">Timeline:</label>
-                <input type="text" id="projectDates1" placeholder="Jan 2023 - Mar 2023">
-                
-                <label for="projectDescription1">Description & Technologies:</label>
-                <textarea id="projectDescription1" rows="4" placeholder="• Developed a full-stack e-commerce platform..."></textarea>
+    <!-- Features Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-4">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="fw-bold">Why Choose Our Resume Builder?</h2>
+                    <p class="lead text-muted">We make resume creation simple and effective</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-primary text-white mx-auto">
+                                <i class="bi bi-lightning-charge"></i>
+                            </div>
+                            <h4 class="card-title">Quick & Easy</h4>
+                            <p class="card-text text-muted">Build your resume in minutes with our intuitive interface and guided process.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-success text-white mx-auto">
+                                <i class="bi bi-palette"></i>
+                            </div>
+                            <h4 class="card-title">Beautiful Templates</h4>
+                            <p class="card-text text-muted">Choose from professional, modern, and minimal templates to match your style.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-danger text-white mx-auto">
+                                <i class="bi bi-trophy"></i>
+                            </div>
+                            <h4 class="card-title">ATS-Friendly</h4>
+                            <p class="card-text text-muted">Our resumes are optimized to pass through Applicant Tracking Systems.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="button-group">
-            <button type="button" class="add-button" onclick="addProject()">Add Project</button>
-            <button type="button" class="remove-button" onclick="removeProject()">Remove Last</button>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section class="py-5 bg-white">
+        <div class="container text-center py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="fw-bold mb-4">Ready to Create Your Resume?</h2>
+                    <p class="lead mb-4">Join thousands of job seekers who have successfully landed interviews with our resume builder.</p>
+                    <a href="resumebuilder.html" class="btn btn-primary btn-lg btn-resume shadow">Get Started Now</a>
+                </div>
+            </div>
         </div>
-        <div class="button-group">
-            <button type="button" onclick="prevTab('education')">Previous: Education</button>
-            <button type="button" onclick="nextTab('skills')">Next: Skills</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <h5>Advanced Resume Builder</h5>
+                    <p class="small text-muted">Your path to career success starts here.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">&copy; 2025 Advanced Resume Builder. All rights reserved.</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </footer>
 
-    <div id="skills" class="form-section tab-content hide">
-        <h2>Skills</h2>
-        <label for="technicalSkills">Technical Skills:</label>
-        <textarea id="technicalSkills" rows="5"></textarea>
-        
-        <label for="softSkills">Soft Skills:</label>
-        <textarea id="softSkills" rows="3"></textarea>
-        
-        <label for="certifications">Certifications:</label>
-        <textarea id="certifications" rows="2"></textarea>
-        
-        <div class="button-group">
-            <button type="button" onclick="prevTab('projects')">Previous: Projects</button>
-            <button type="button" onclick="nextTab('extras')">Next: Extras</button>
-        </div>
-    </div>
-
-    <div id="extras" class="form-section tab-content hide">
-        <h2>Additional Information</h2>
-        <label for="hobbies">Hobbies:</label>
-        <textarea id="hobbies" rows="2"></textarea>
-        
-        <label for="extracurricular">Extracurricular Activities:</label>
-        <textarea id="extracurricular" rows="5"></textarea>
-        
-        <div class="template-select">
-            <label for="resumeTemplate">Resume Template:</label>
-            <select id="resumeTemplate">
-                <option value="professional">Professional</option>
-                <option value="modern">Modern</option>
-                <option value="minimal">Minimal</option>
-            </select>
-        </div>
-        
-        <div class="button-group">
-            <button type="button" onclick="prevTab('skills')">Previous: Skills</button>
-            <button type="button" onclick="generateResume()">Generate Resume</button>
-        </div>
-    </div>
-  
-    <div id="loading" class="loading">
-        <div class="loading-spinner"></div>
-        <p>Generating your professional resume...</p>
-    </div>
-
-    <div id="resumeOutput" class="form-section"></div>
-
-    <script src="script.js"></script>
-
-    <footer class="bg-dark text-white text-center py-3">
-      <p class="mb-0">&copy; 2025 Advanced Resume Builder. All rights reserved.</p>
-  </footer>
-  
-
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
