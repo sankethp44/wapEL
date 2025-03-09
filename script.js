@@ -15,7 +15,8 @@ function generateResume() {
     const address = document.getElementById('address').value || 'City, State';
     const linkedin = document.getElementById('linkedin').value || '';
     const github = document.getElementById('github').value || '';
-    
+    const aboutMe = document.getElementById('aboutMe').value || '';
+
     // Get education info
     let educationHTML = '';
     for (let i = 1; i <= educationCount; i++) {
@@ -78,7 +79,7 @@ function generateResume() {
       resumeHTML = generateProfessionalTemplate(
         name, profession, email, phone, address, linkedin, github,
         educationHTML, projectsHTML, techSkills, softSkills, 
-        certifications, hobbies, extracurricular
+        certifications, hobbies, extracurricular, aboutMe
       );
     }
     // Modern template
@@ -86,7 +87,7 @@ function generateResume() {
       resumeHTML = generateModernTemplate(
         name, profession, email, phone, address, linkedin, github,
         educationHTML, projectsHTML, techSkills, softSkills, 
-        certifications, hobbies, extracurricular
+        certifications, hobbies, extracurricular, aboutMe
       );
     }
     // Minimal template
@@ -94,7 +95,7 @@ function generateResume() {
       resumeHTML = generateMinimalTemplate(
         name, profession, email, phone, address, linkedin, github,
         educationHTML, projectsHTML, techSkills, softSkills, 
-        certifications, hobbies, extracurricular
+        certifications, hobbies, extracurricular, aboutMe
       );
     }
     
@@ -114,7 +115,7 @@ function generateResume() {
 function generateProfessionalTemplate(
   name, profession, email, phone, address, linkedin, github,
   educationHTML, projectsHTML, techSkills, softSkills, 
-  certifications, hobbies, extracurricular
+  certifications, hobbies, extracurricular, aboutMe
 ) {
   return `
     <div class="resume-container">
@@ -122,14 +123,19 @@ function generateProfessionalTemplate(
         <h1 class="resume-name">${name}</h1>
         <p class="resume-title">${profession}</p>
         <div class="resume-contact">
-          ${email ? `<div class="resume-contact-item">${email}</div>` : ''}
-          ${phone ? `<div class="resume-contact-item">${phone}</div>` : ''}
-          ${address ? `<div class="resume-contact-item">${address}</div>` : ''}
-          ${linkedin ? `<div class="resume-contact-item">${linkedin}</div>` : ''}
-          ${github ? `<div class="resume-contact-item">${github}</div>` : ''}
+          ${email ? `<div class="resume-contact-item"><i class="fas fa-envelope"></i> ${email}</div>` : ''}
+          ${phone ? `<div class="resume-contact-item"><i class="fas fa-phone"></i> ${phone}</div>` : ''}
+          ${address ? `<div class="resume-contact-item"><i class="fas fa-map-marker-alt"></i> ${address}</div>` : ''}
+          ${linkedin ? `<div class="resume-contact-item"><i class="fab fa-linkedin"></i> ${linkedin}</div>` : ''}
+          ${github ? `<div class="resume-contact-item"><i class="fab fa-github"></i> ${github}</div>` : ''}
         </div>
       </div>
-      
+      ${aboutMe ? `
+        <div class="resume-section">
+          <h2 class="resume-section-title">About Me</h2>
+          <p class="resume-about-me">${aboutMe}</p>
+        </div>
+        ` : ''}
       <div class="resume-section">
         <h2 class="resume-section-title">Education</h2>
         ${educationHTML || '<p>No education entries added</p>'}
@@ -143,19 +149,15 @@ function generateProfessionalTemplate(
       <div class="resume-section">
         <h2 class="resume-section-title">Skills</h2>
         <div class="resume-skills">
-          <div class="resume-skills-column">
-            <div class="resume-skill-category">
-              <div class="resume-skill-title">Technical Skills</div>
-              <p>${techSkills || 'No technical skills added'}</p>
-            </div>
+          <div class="resume-skill-category">
+            <div class="resume-skill-title">Technical Skills</div>
+            <p>${techSkills || 'No technical skills added'}</p>
           </div>
-          <div class="resume-skills-column">
-            <div class="resume-skill-category">
-              <div class="resume-skill-title">Soft Skills</div>
-              <ul class="resume-bullets">
-                ${formatBulletPoints(softSkills) || '<li>No soft skills added</li>'}
-              </ul>
-            </div>
+          <div class="resume-skill-category">
+            <div class="resume-skill-title">Soft Skills</div>
+            <ul class="resume-bullets">
+              ${formatBulletPoints(softSkills) || '<li>No soft skills added</li>'}
+            </ul>
           </div>
         </div>
       </div>
@@ -188,7 +190,7 @@ function generateProfessionalTemplate(
 function generateModernTemplate(
   name, profession, email, phone, address, linkedin, github,
   educationHTML, projectsHTML, techSkills, softSkills, 
-  certifications, hobbies, extracurricular
+  certifications, hobbies, extracurricular, aboutMe
 ) {
   return `
     <div class="modern-resume">
@@ -196,11 +198,17 @@ function generateModernTemplate(
         <h1 class="modern-name">${name}</h1>
         <p class="modern-title">${profession}</p>
         <div class="modern-contact">
-          ${email ? `<div>${email}</div>` : ''}
-          ${phone ? `<div>${phone}</div>` : ''}
-          ${address ? `<div>${address}</div>` : ''}
-          ${linkedin ? `<div>${linkedin}</div>` : ''}
-          ${github ? `<div>${github}</div>` : ''}
+         ${aboutMe ? `
+        <div class="modern-section">
+          <h2 class="modern-section-title">About Me</h2>
+          <p class="modern-about-me">${aboutMe}</p>
+        </div>
+        ` : ''}
+          ${email ? `<div><i class="fas fa-envelope"></i> ${email}</div>` : ''}
+          ${phone ? `<div><i class="fas fa-phone"></i> ${phone}</div>` : ''}
+          ${address ? `<div><i class="fas fa-map-marker-alt"></i> ${address}</div>` : ''}
+          ${linkedin ? `<div><i class="fab fa-linkedin"></i> ${linkedin}</div>` : ''}
+          ${github ? `<div><i class="fab fa-github"></i> ${github}</div>` : ''}
         </div>
       </div>
       
@@ -269,10 +277,11 @@ function generateModernTemplate(
   `;
 }
 
+
 function generateMinimalTemplate(
   name, profession, email, phone, address, linkedin, github,
   educationHTML, projectsHTML, techSkills, softSkills, 
-  certifications, hobbies, extracurricular
+  certifications, hobbies, extracurricular, aboutMe
 ) {
   return `
     <div class="minimal-resume">
@@ -280,14 +289,19 @@ function generateMinimalTemplate(
         <h1 class="minimal-name">${name}</h1>
         <p class="minimal-title">${profession}</p>
         <div class="minimal-contact">
-          ${email ? `<div>${email}</div>` : ''}
-          ${phone ? `<div>${phone}</div>` : ''}
-          ${address ? `<div>${address}</div>` : ''}
-          ${linkedin ? `<div>${linkedin}</div>` : ''}
-          ${github ? `<div>${github}</div>` : ''}
+          ${email ? `<div><i class="fas fa-envelope"></i> ${email}</div>` : ''}
+          ${phone ? `<div><i class="fas fa-phone"></i> ${phone}</div>` : ''}
+          ${address ? `<div><i class="fas fa-map-marker-alt"></i> ${address}</div>` : ''}
+          ${linkedin ? `<div><i class="fab fa-linkedin"></i> ${linkedin}</div>` : ''}
+          ${github ? `<div><i class="fab fa-github"></i> ${github}</div>` : ''}
         </div>
       </div>
-      
+      ${aboutMe ? `
+        <div class="minimal-section">
+          <h2 class="minimal-section-title">About Me</h2>
+          <p class="minimal-about-me">${aboutMe}</p>
+        </div>
+        ` : ''}
       <div class="minimal-section">
         <h2 class="minimal-section-title">Education</h2>
         ${educationHTML.replace(/resume-entry/g, 'minimal-entry')
